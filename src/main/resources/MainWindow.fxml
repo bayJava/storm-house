@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.*?>
 
 <VBox fx:controller="MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
-    spacing="10" prefHeight="400" prefWidth="250">
+    spacing="10" prefHeight="300" prefWidth="400" alignment="CENTER">
 
-    <Button onAction="#onGreetClicked" text="Greet"  />
+    <Button text="Start" onAction="#onStartClicked" />
 
 </VBox>

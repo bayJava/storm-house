@@ -1,16 +1,23 @@
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 
 public class MainWindow {
 
     @FXML
-    void onGreetClicked(ActionEvent event) {
-        var alert = new Alert(AlertType.INFORMATION, "Hello, world!");
-        alert.setHeaderText(null);
-        alert.show();
+    public void onStartClicked(ActionEvent e) throws IOException {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("TitleWindow.fxml"));
+
+        Stage titleWindow = new Stage();
+        titleWindow.setScene(new Scene(loader.load()));
+
+        titleWindow.setTitle("Storm The House");
+        titleWindow.show();
     }
 }
