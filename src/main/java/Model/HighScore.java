@@ -1,7 +1,11 @@
 package Model;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HighScore implements Serializer {
@@ -91,6 +95,33 @@ public class HighScore implements Serializer {
         }
 
     }
+
+    /**
+     // For Sort function
+     // Pass file as an arugument to sort function
+     // Get the a file path and readAllLines of the file
+     // Put Loop for check the one by ne record 
+     //  Get All the columns and Add to Scorelist
+     // And Pass that List to Collections.sort() method
+     // then return the Scorelist
+    */
+
+    public List<Score> sort(File filename) throws Exception{
+        Path path = Paths.get(filename.toURI());
+        List<String> allrecords = Files.readAllLines(path);
+        for (int i = 1; i < allrecords.size(); i++) {
+            String line = scoresList.get(i).getName() + "," + scoresList.get(i).getScore() + "," + scoresList.get(i).getDifficultyType();
+            String[] columns = line.split(",");
+            DifficultyType diffType = DifficultyType.valueOf(columns[2]);
+            Score record = new Score(columns[0],Integer.parseInt(columns[1]), diffType);
+            scoresList.add(record);
+        }
+        //Stream.of(scoresList).max((s1,s2) -> s1.length()- s2.length()).get();
+        Collections.sort(scoresList);
+        return scoresList;
+    }
+
+
 
     /**
      * 

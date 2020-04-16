@@ -1,6 +1,6 @@
 package Model;
 
-public class Score implements Serializer {
+public class Score implements Serializer,Comparable<Score> {
     private String name;
     private int score;
     private DifficultyType difficultyType;
@@ -69,6 +69,23 @@ public class Score implements Serializer {
     public void setDifficultyType(DifficultyType difficultyType) {
         this.difficultyType = difficultyType;
     }
+
+
+    /**
+     * To Get the Score in DESC order 
+     */
+    @Override
+    public int compareTo(Score score) {
+    //    return score.getScore() - this.getScore(); // DESC Another Way
+    int  scores = ((Score) score). getScore(); // same type object
+    if (this.score < scores)
+      return 1;
+    else if (this.score > scores)
+       return -1;
+    else
+       return 0;
+    }
+
 
     /** 
      * Parses the Score Object to String
