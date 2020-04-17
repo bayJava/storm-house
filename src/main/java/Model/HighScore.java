@@ -2,23 +2,34 @@ package Model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HighScore implements Serializer {
+    
     private List<Score> scoresList = new ArrayList<Score>();
     private int maxNumOfHighScoreEntries = 15;
     private int maxScoresDisplayed = 5;
 
     /**
-     * Takes a Score as I/P.
-     * Loads the High Scores from File into a Data Structure (scoresList).
-     * Adds the incoming Score into the appropriate position in the List.
-     * Writes the List back to the File (overwrite the old file).
+     * Takes a Score as I/P. Loads the High Scores from File into a Data Structure
+     * (scoresList). Adds the incoming Score into the List.  Sort the socresList
+     * List. Writes the List back to the File (overwrite the old file).
      * 
-     * @param score - Score Object to be added 
+     * @param score - Score Object to be added
+     * @throws IOException
      */
-    public void addHighScore(Score score) {
+    public void addHighScore(Score score) throws IOException {
+        String fileName = "src/main/resources/SaveScoresData.txt";
+        File fileObj = new File(fileName);
+        if (!fileObj.exists())
+            fileObj.createNewFile();
+        else
+            this.loadScores(fileName);
+
         scoresList.add(score);
+        Collections.sort(scoresList, Collections.reverseOrder());
+        this.saveScores(fileName);
     
     }
 
@@ -59,6 +70,9 @@ public class HighScore implements Serializer {
             DifficultyType diffType = DifficultyType.valueOf(allFields[2]);
             // 7. Populate the High Scores List with the data from eac line
             scoresList.add(new Score(name,score,diffType));
+            Score scr = new Score(name,score,diffType);
+            System.out.println(scr.toString());
+            line = buffObj.readLine();
         }
         // Close the File
         buffObj.close();
