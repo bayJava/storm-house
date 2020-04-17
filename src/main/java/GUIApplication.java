@@ -9,7 +9,7 @@ public class GUIApplication extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        var loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+        var loader = new FXMLLoader(getClass().getResource("TitleWindow.fxml"));
         var scene = new Scene(loader.load());
 
         stage.setScene(scene);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="TitleWindow" alignment="CENTER" spacing="20" prefHeight="400" prefWidth="800">
+<VBox fx:controller="TitleWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
+    spacing="10" prefHeight="300" prefWidth="400" alignment="CENTER">
 
+    <Button text="Start" onAction="#onStartClicked" />
 
-</HBox>
+</VBox>
