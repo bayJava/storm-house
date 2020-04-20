@@ -35,7 +35,18 @@ public class HighScore implements Serializer {
      * @return - True or False
      */
     public boolean findIfScoreQualifiesAsHigh(Score score) {
-        return true;
+        int scoreListsize = scoresList.size();
+        scoresList.add(score);
+     // Score lowestScore = Collections.min(scoresList);
+        Score lowestScore = scoresList.get(scoresList.size()- 1);
+        if(scoreListsize < 20){
+            return true;
+        }else if(score.getScore() > lowestScore.getScore()){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     /**
