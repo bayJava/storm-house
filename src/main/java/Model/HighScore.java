@@ -27,7 +27,7 @@ public class HighScore implements Serializer {
     }
 
     /**
-    * Takes a Score as I/P. If the List size is < 20 then the Score Qualifies else
+    * Takes a Score as I/P. If the List size is < 10 then the Score Qualifies else
      * if Incoming Score > than the lowest score in the List (last element) If so
      * return 'true' or else return 'false'.
      * 
@@ -39,7 +39,7 @@ public class HighScore implements Serializer {
         scoresList.add(score);
      // Score lowestScore = Collections.min(scoresList);
         Score lowestScore = scoresList.get(scoresList.size()- 1);
-        if(scoreListsize < 20){
+        if(scoreListsize < 10){
             return true;
         }else if(score.getScore() > lowestScore.getScore()){
             return true;

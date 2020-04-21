@@ -65,6 +65,17 @@ public class HighScoreTest {
         assertEquals(5, highScores.getScoresList().size());
     }
     
+
+    @Test
+    public void testfindIfScoreQualifiesAsHigh(){
+        HighScore highScores = UnitTestUtil.setupHighScores();
+        Score score = new Score("Frank", 20000, DifficultyType.INSANE);
+        boolean ExpectedAns = true;
+        boolean val = highScores.findIfScoreQualifiesAsHigh(score);
+        assertEquals(ExpectedAns,val);
+        assertTrue(highScores.findIfScoreQualifiesAsHigh(score));
+    }
+
     @Test
     public void testSaveScores() {}
 }

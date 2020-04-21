@@ -22,12 +22,24 @@ public class MainWindow {
     @FXML
     public void loadHighScore(ActionEvent e) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("HighScoresData.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HighScorePlayers.fxml"));
 
         Stage highscoreData = new Stage();
         highscoreData.setScene(new Scene(loader.load()));
 
         highscoreData.show();
+
+    }
+
+    @FXML
+    public void newHighScore(ActionEvent e) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("NewHighScore.fxml"));
+
+        Stage newHighscore = new Stage();
+        newHighscore.setScene(new Scene(loader.load()));
+
+        newHighscore.show();
 
     }
 }

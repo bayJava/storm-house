@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+<?import java.lang.String?>
+
+<VBox fx:controller="MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
+    spacing="10" prefHeight="500" prefWidth="450">
+
+      <HBox alignment="CENTER">
+        <Label text="High Scores" style="-fx-font-size: 20px" alignment="CENTER"/>
+      </HBox>
+
+      <HBox style="-fx-font-size: 17px;">
+        <Label text="Name" id="Name" />
+        <Label text="Score" id="Score" />
+      </HBox>
+
+    <ChoiceBox value="">
+    <items>
+        <FXCollections fx:factory="observableArrayList">
+            <String fx:value="All Difficulty"/>
+            <String fx:value="Normal Difficulty" />
+            <String fx:value="Hard Difficulty" />
+            <String fx:value="Insane Difficulty" />
+        </FXCollections>
+    </items>
+     <value>
+        <String fx:value="All Difficulty" />
+    </value>
+    </ChoiceBox>
+
+  <HBox style="-fx-font-size: 17px;" spacing="5" alignment="Center">
+    <Button text="Play" id="playid" />
+    <Button text="Quit Game" id="Quitid" />
+  </HBox>
+
+</VBox>

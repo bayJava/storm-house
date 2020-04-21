@@ -3,9 +3,8 @@
 }
 
 .label {
-
     -fx-spacing: 500;
-    -fx-padding: 1 40 1 40;
+    -fx-padding: 1 40 1 90;
     -fx-font-weight:bold;
-    -fx-font-size:15px; 
+    -fx-text-alignment: justify;
 }

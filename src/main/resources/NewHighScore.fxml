@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="MainWindow"  xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
+    spacing="10" prefHeight="500" prefWidth="450">
+      <HBox alignment="CENTER" style="-fx-font-size: 20px" >
+       <Label text="New HighScore " alignment="CENTER"/>
+    </HBox>
+     <HBox alignment="CENTER" style="-fx-font-size: 13px;">
+      <Label text="Congrats you got into list of great defendence"/>
+     </HBox>
+          <HBox alignment="CENTER" style="-fx-font-size: 13px;">
+      <Label text="of the Stronghold!.Please Enter your Name Below ..."/>
+     </HBox>
+     <HBox alignment="CENTER">
+       <TextField id="name" fx:id="name"/>
+     </HBox> 
+     <HBox alignment="CENTER" style="-fx-font-size: 14px">
+      <Label text="Your HighScore:"/>
+    </HBox>
+
+</VBox>
