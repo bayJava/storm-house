@@ -35,6 +35,7 @@ public class HighScore implements Serializer {
         if (findIfScoreQualifiesAsHigh(score)) {
             addHighScore(score);
             saveScores(fileName);
+            loadScores(fileName);
         } 
     }
 
