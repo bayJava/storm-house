@@ -6,6 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.io.IOException;
 
 public class HighScoreTest {
@@ -67,7 +68,7 @@ public class HighScoreTest {
     
 
     @Test
-    public void testfindIfScoreQualifiesAsHigh(){
+    public void testfindIfScoreQualifiesAsHigh() throws IOException {
         HighScore highScores = UnitTestUtil.setupHighScores();
         Score score = new Score("Frank", 20000, DifficultyType.INSANE);
         boolean ExpectedAns = true;
@@ -77,5 +78,20 @@ public class HighScoreTest {
     }
 
     @Test
-    public void testSaveScores() {}
+    public void testSaveScores() {
+        HighScore highScores = UnitTestUtil.setupHighScores();
+
+        try {
+            highScores.loadScores("src/main/resources/HighScoresTestData.txt");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            System.out.println("I/O Error");
+            e.printStackTrace();
+        }
+        highScores.saveScores("src/main/resources/SaveScoresTestData.txt");
+        // Check if File SaveScoresTestData.txt exists
+        File fileObj =  new File("src/main/resources/SaveScoresTestData.txt");
+        assertTrue(fileObj.exists());
+
+    } 
 }

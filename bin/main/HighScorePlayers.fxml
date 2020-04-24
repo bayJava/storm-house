@@ -13,10 +13,12 @@
       </HBox>
 
       <HBox style="-fx-font-size: 17px;">
+        <Label text="Rank" id="Rank" />
         <Label text="Name" id="Name" />
-        <Label text="Score" id="Score" />
+        <Label text="Score" id="Score"/>
       </HBox>
 
+    <VBox spacing="5" style="-fx-font-size: 14px;" alignment="BOTTOM_RIGHT">
     <ChoiceBox value="">
     <items>
         <FXCollections fx:factory="observableArrayList">
@@ -31,9 +33,10 @@
     </value>
     </ChoiceBox>
 
-  <HBox style="-fx-font-size: 17px;" spacing="5" alignment="Center">
+    <HBox style="-fx-font-size: 17px;" spacing="5" alignment="BOTTOM_RIGHT">
     <Button text="Play" id="playid" />
     <Button text="Quit Game" id="Quitid" />
-  </HBox>
+    </HBox>
+   </VBox>
 
 </VBox>

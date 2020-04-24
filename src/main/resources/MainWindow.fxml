@@ -9,4 +9,5 @@
     <Button onAction="#onGreetClicked" text="Greet"  />
     <Button onAction="#loadHighScore" text="HighScores"  />
     <Button onAction="#newHighScore" text="newHighScore"  />
+    <Button onAction="#instructions" text="instructions"  />
 </VBox>

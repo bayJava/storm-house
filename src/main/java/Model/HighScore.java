@@ -1,53 +1,85 @@
 package Model;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class HighScore implements Serializer {
+    
     private List<Score> scoresList = new ArrayList<Score>();
-    private int maxNumOfHighScoreEntries = 15;
-    private int maxScoresDisplayed = 5;
+    private int maxNumOfHighScoreEntries = 10;
+
+    /* 
+    1. Load the Scores from File
+    3. IF new Score qualifies for High Score
+    2.   Add Score to List
+    3.   Save scores to File
+    4.   Load Scores to scoresList for display purpose 
+    5. End IF
+    */
 
     /**
-     * Takes a Score as I/P.
-     * Loads the High Scores from File into a Data Structure (scoresList).
-     * Adds the incoming Score into the appropriate position in the List.
-     * Writes the List back to the File (overwrite the old file).
-     * 
-     * @param score - Score Object to be added 
+     * @param score
+     * @throws IOException
      */
-    public void addHighScore(Score score) {
+    public void processScore(Score score) throws IOException {
+        // Load scores
+        String fileName = "src/main/resources/SaveScoresData.txt";
+        File fileObj = new File(fileName);
+        if (!fileObj.exists())
+            fileObj.createNewFile();
+        else
+            this.loadScores(fileName);
+
+        if (findIfScoreQualifiesAsHigh(score)) {
+            addHighScore(score);
+            saveScores(fileName);
+            loadScores(fileName);
+        } 
+    }
+
+    /**
+     * Takes a Score as I/P. Loads the High Scores from File into a Data Structure
+     * (scoresList). Adds the incoming Score into the List.  Sort the socresList
+     * List. 
+     * 
+     * @param score - Score Object to be added
+     * @throws IOException
+     */
+    public void addHighScore(Score score) throws IOException {
+
         scoresList.add(score);
+        Collections.sort(scoresList, Collections.reverseOrder());
     
     }
 
     /**
-    * Takes a Score as I/P. If the List size is < 10 then the Score Qualifies else
-     * if Incoming Score > than the lowest score in the List (last element) If so
-     * return 'true' or else return 'false'.
+     * Takes a Score as I/P. 
+     * If the List size is < 10 then the Score Qualifies else
+     * if Incoming Score > than the lowest score in the List (last element)
+     *  return 'true'
+     * else
+     *  return 'false'.
      * 
      * @param score - Score to be checked if qualifies to be high
      * @return - True or False
+     * @throws IOException
      */
-    public boolean findIfScoreQualifiesAsHigh(Score score) {
-        int scoreListsize = scoresList.size();
-        scoresList.add(score);
-     // Score lowestScore = Collections.min(scoresList);
-        Score lowestScore = scoresList.get(scoresList.size()- 1);
-        if(scoreListsize < 10){
-            return true;
-        }else if(score.getScore() > lowestScore.getScore()){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean findIfScoreQualifiesAsHigh(Score score) throws IOException {
 
-    }
+        // If the List size is < 10 then the Score Qualifies as High
+        if (scoresList.size() < 10) {
+        return true;
+        }
+        else {
+        Score leastScore = scoresList.get(scoresList.size() - 1);
+        if (score.getScore() > leastScore.getScore() ) {
+        return true;
+        } else
+        return false;
+        }
+        }
 
     /**
      * 
@@ -74,6 +106,9 @@ public class HighScore implements Serializer {
             DifficultyType diffType = DifficultyType.valueOf(allFields[2]);
             // 7. Populate the High Scores List with the data from eac line
             scoresList.add(new Score(name,score,diffType));
+            Score scr = new Score(name,score,diffType);
+            System.out.println(scr.toString());
+            line = buffObj.readLine();
         }
         // Close the File
         buffObj.close();
@@ -95,7 +130,12 @@ public class HighScore implements Serializer {
             FileWriter fw = new FileWriter(outFile);
             BufferedWriter bufReader = new BufferedWriter(fw);
             PrintWriter outStream = new PrintWriter(bufReader);
-            for (int i = 0; i < scoresList.size(); ++i) {
+            // Save only top 10 scores
+            int scoresSize = scoresList.size();
+            if (scoresSize > 10) 
+                scoresSize = 10;
+
+            for (int i = 0; i < scoresSize; ++i) {
                 String line = scoresList.get(i).getName() + "," + scoresList.get(i).getScore() + "," + scoresList.get(i).getDifficultyType();
                 outStream.println(line);
             }
@@ -106,33 +146,6 @@ public class HighScore implements Serializer {
         }
 
     }
-
-    /**
-     // For Sort function
-     // Pass file as an arugument to sort function
-     // Get the a file path and readAllLines of the file
-     // Put Loop for check the one by ne record 
-     //  Get All the columns and Add to Scorelist
-     // And Pass that List to Collections.sort() method
-     // then return the Scorelist
-    */
-
-    public List<Score> sort(File filename) throws Exception{
-        Path path = Paths.get(filename.toURI());
-        List<String> allrecords = Files.readAllLines(path);
-        for (int i = 1; i < allrecords.size(); i++) {
-            String line = scoresList.get(i).getName() + "," + scoresList.get(i).getScore() + "," + scoresList.get(i).getDifficultyType();
-            String[] columns = line.split(",");
-            DifficultyType diffType = DifficultyType.valueOf(columns[2]);
-            Score record = new Score(columns[0],Integer.parseInt(columns[1]), diffType);
-            scoresList.add(record);
-        }
-        //Stream.of(scoresList).max((s1,s2) -> s1.length()- s2.length()).get();
-        Collections.sort(scoresList);
-        return scoresList;
-    }
-
-
 
     /**
      * 
@@ -167,21 +180,6 @@ public class HighScore implements Serializer {
         this.maxNumOfHighScoreEntries = maxNumOfHighScoreEntries;
     }
 
-    /**
-     * 
-     * @return - returns the maximum number of scores displayed on the screen at a time (5).
-     */
-    public int getMaxScoresDisplayed() {
-        return maxScoresDisplayed;
-    }
-
-    /**
-     * Sets the maximum number of scores displayed on the screen at a time to 5.
-     * @param maxScoresDisplayed
-     */
-    public void setMaxScoresDisplayed(int maxScoresDisplayed) {
-        this.maxScoresDisplayed = maxScoresDisplayed;
-    }
     
     // Singleton implementation
     // prevent direct instantiation outside this class
@@ -211,4 +209,3 @@ public class HighScore implements Serializer {
 
     }
 }
-

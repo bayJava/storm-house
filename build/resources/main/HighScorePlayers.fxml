@@ -5,37 +5,42 @@
 <?import javafx.collections.*?>
 <?import java.lang.String?>
 
-<VBox fx:controller="MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
+<VBox fx:controller="HighScorePlayers" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
     spacing="10" prefHeight="500" prefWidth="450">
 
-      <HBox alignment="CENTER">
-        <Label text="High Scores" style="-fx-font-size: 20px" alignment="CENTER"/>
-      </HBox>
-
-      <HBox style="-fx-font-size: 17px;">
-        <Label text="Name" id="Name" />
-        <Label text="Score" id="Score"/>
-      </HBox>
-
-    <HBox spacing="5" style="-fx-font-size: 14px;" alignment="BOTTOM_RIGHT">
-    <ChoiceBox value="">
-    <items>
-        <FXCollections fx:factory="observableArrayList">
-            <String fx:value="All Difficulty"/>
-            <String fx:value="Normal Difficulty" />
-            <String fx:value="Hard Difficulty" />
-            <String fx:value="Insane Difficulty" />
-        </FXCollections>
-    </items>
-     <value>
-        <String fx:value="All Difficulty" />
-    </value>
-    </ChoiceBox>
+    <HBox alignment="CENTER">
+      <Label text="High Scores" style="-fx-font-size: 20px" alignment="CENTER"/>
     </HBox>
 
-  <HBox style="-fx-font-size: 17px;" spacing="5" alignment="BOTTOM_RIGHT">
-    <Button text="Play" id="playid" />
-    <Button text="Quit Game" id="Quitid" />
-  </HBox>
+    <HBox style="-fx-font-size: 17px;">
+      <Label text="Rank" />
+      <Label text="Name" />
+      <Label text="Score"/>
+    </HBox>
+    <HBox>
+      <VBox fx:id="vrank"></VBox>
+      <VBox fx:id="vname"></VBox>
+      <VBox fx:id="vscore"></VBox>
+    </HBox>
 
+    <VBox spacing="5" style="-fx-font-size: 14px;" alignment="BOTTOM_RIGHT">
+      <ChoiceBox value="">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="All Difficulty"/>
+              <String fx:value="Normal Difficulty" />
+              <String fx:value="Hard Difficulty" />
+              <String fx:value="Insane Difficulty" />
+            </FXCollections>
+        </items>
+        <value>
+            <String fx:value="All Difficulty" />
+        </value>
+      </ChoiceBox>
+
+      <HBox style="-fx-font-size: 17px;" spacing="5" alignment="BOTTOM_RIGHT">
+        <Button text="Play" id="playid" />
+        <Button text="Quit Game" id="Quitid" />
+      </HBox>
+    </VBox>
 </VBox>

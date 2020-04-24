@@ -107,5 +107,10 @@ public class Score implements Serializer,Comparable<Score> {
         // TODO Auto-generated method stub
 
     }
-    
+  
+    public Score(HighScore highScores) {
+    }
+
+
+
 }

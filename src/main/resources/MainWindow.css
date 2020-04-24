@@ -4,7 +4,7 @@
 
 .label {
     -fx-spacing: 500;
-    -fx-padding: 1 40 1 90;
+    -fx-padding: 1 40 1 40;
     -fx-font-weight:bold;
     -fx-text-alignment: justify;
 }
