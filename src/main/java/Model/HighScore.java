@@ -114,12 +114,14 @@ public class HighScore implements Serializer {
         buffObj.close();
 
     }
+
+    
     /**
      * 1. Create the File Object to identify the file to write to
      * 2. Create the FileWriter object for the File object to work with a character Stream
      * 3. Create the BufferedWriter object to write into the stream by passing the FileWriter object
      *    connected to the File object. 
-     * Loop through the Scores List and Write each line to PrintWriter Stream 
+     * Loop through the first 10 scores in Scores List and Write each line to PrintWriter Stream 
      * Close the file
      * @param fileName - File to Write to
      */

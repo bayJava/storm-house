@@ -7,5 +7,7 @@
     spacing="10" prefHeight="400" prefWidth="250">
 
     <Button onAction="#onGreetClicked" text="Greet"  />
-
+    <Button onAction="#onLoadHighScoreScreen" text="HighScores"  />
+    <Button onAction="#onNewHighScore" text="newHighScore"  />
+    <Button onAction="#onInstructions" text="instructions"  />
 </VBox>
