@@ -1,0 +1,5 @@
+"Frank",20000, INSANE
+"Joe",25000, HARD
+"Martha",15000, NORMAL
+"Padma",30000, NORMAL
+"Jhanu",18000, NORMAL

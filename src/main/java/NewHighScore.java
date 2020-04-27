@@ -23,6 +23,8 @@ public class NewHighScore {
 
     @FXML
     public void initialize() { 
+        playerName.setStyle("-fx-text-fill: #0F3DAB");
+        newScore.setStyle("-fx-text-fill: green");
     }    
 
 }

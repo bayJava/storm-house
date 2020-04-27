@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="Instructions"  xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
+   spacing="10" prefHeight="500" prefWidth="450" style="-fx-background-color: lightgray">
+    <HBox alignment="CENTER" style="-fx-font-size: 20px;-fx-border-color:#DAA520;-fx-border-width:2px;-fx-border-height:2px;-fx-font: 28px Vivaldi;" >
+      <Label style="-fx-text-fill: linear-gradient(red , lightgreen);" text="About Game" alignment="CENTER"/>
+    </HBox>
+    <HBox alignment="CENTER">
+      <Label style="-fx-font-size:15px;" text="Storm the House is an awesome stickman defense game. In this title, you must protect your stickman house from the invading stickmen mob who wish to destroy it! You must use the weapons at your disposal to eliminate them and keep your home safe." wrapText="true"/>
+    </HBox>
+    <HBox alignment="CENTER" >
+      <Label style="-fx-font-size:15px;" text="You start with a basic weapon, but as you kill the invading stickmen, you can purchase new weapons and upgrade them to do more damage. " wrapText="true"/>
+    </HBox>
+
+</VBox>

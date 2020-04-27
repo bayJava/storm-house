@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 
 public class MainWindow {
 
+    //@FXML ImageView imgView;
     @FXML Label Rank;
     @FXML Label Name;
     @FXML Label Score;
@@ -63,6 +65,20 @@ public class MainWindow {
     }
 
     @FXML
+    public void onPlayGame(ActionEvent e) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayGame.fxml"));
+
+        Stage instruction = new Stage();
+
+        instruction.setScene(new Scene(loader.load()));
+
+        instruction.setTitle("Game"); 
+        instruction.show();
+
+    }
+
+    @FXML
     public void onInstructions(ActionEvent e) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Instructions.fxml"));
@@ -74,6 +90,18 @@ public class MainWindow {
         instruction.setTitle("Instructions"); 
         instruction.show();
 
+    }
+
+    @FXML
+    public void onAbout(ActionEvent e) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("About.fxml"));
+
+        Stage instruction = new Stage();
+
+        instruction.setScene(new Scene(loader.load()));
+
+        instruction.setTitle("About"); 
+        instruction.show(); 
     }
 
 }

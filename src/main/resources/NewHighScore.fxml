@@ -4,20 +4,20 @@
 <?import javafx.scene.layout.*?>
 
 <VBox fx:controller="NewHighScore"  xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
-    spacing="10" prefHeight="500" prefWidth="450">
+    spacing="10" prefHeight="500" prefWidth="450" style="-fx-background-color: #F5B7B1">
 
     <HBox alignment="CENTER" style="-fx-font-size: 20px">
-      <Label text="New HighScore !" alignment="CENTER"/>
+      <Label style="-fx-font-size: 30px; -fx-text-fill: red" text="New HighScore !" alignment="CENTER"/>
     </HBox>
-    <HBox alignment="CENTER" style="-fx-font-size: 13px;">
+    <HBox alignment="CENTER" style="-fx-font-size: 15px;">
       <Label text="Congrats you got into list of great Defenders of the Stronghold!.Please Enter your Name Below .." wrapText="true"/>
     </HBox>
-    <HBox alignment="CENTER" style="-fx-font-size: 13px;">
-      <Label text="Hi" wrapText="true"/>
+    <HBox alignment="CENTER" spacing="10" style="-fx-font-size: 20px;">
+      <Label style="-fx-text-fill: #0F3DAB;" text="Hi" wrapText="true"/>
       <Label fx:id="playerName" text="Reshi Pasupuleti" />
     </HBox>
-    <HBox alignment="CENTER" style="-fx-font-size: 14px;-fx-spacing:2px;">
-      <Label text="Your HighScore:"/>
+    <HBox alignment="CENTER" style="-fx-font-size: 20px;-fx-spacing:2px;">
+      <Label style="-fx-text-fill: green;"  text="Your HighScore:"/>
       <Label fx:id="newScore" text="50,000"/>
     </HBox>
     <HBox alignment="CENTER" style="-fx-font-size: 14px;-fx-spacing:2px;">

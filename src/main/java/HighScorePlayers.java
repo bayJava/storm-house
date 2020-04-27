@@ -6,6 +6,7 @@ import Model.Score;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 
 public class HighScorePlayers {
 
@@ -17,6 +18,7 @@ public class HighScorePlayers {
     VBox vscore;
 
     HighScore highScores = HighScore.getInstance();
+    final AudioClip AUDIO_EXPLODE = new AudioClip(getClass().getResource("/media/highscoressound.wav").toString());
 
     @FXML
     void initialize() throws IOException {
@@ -28,7 +30,7 @@ public class HighScorePlayers {
          */
         highScores.loadScores("src/main/resources/SaveScoresTestData.txt");
         List<Score> slist = highScores.getScoresList();
-           
+        AUDIO_EXPLODE.play();   
         for (int i = 0; i < slist.size(); ++i) {
 
             Label rank = new Label();
@@ -37,14 +39,18 @@ public class HighScorePlayers {
 
             rank.setText("" + (i + 1));
             vrank.getChildren().add(rank);
+            rank.setStyle("-fx-text-fill: blue;-fx-font-weight: bold");
 
             name.setText(slist.get(i).getName());
             vname.getChildren().add(name);
+            name.setStyle("-fx-text-fill: blue;-fx-font-weight: bold");
 
             scoreLabel.setText(String.valueOf(slist.get(i).getScore()));
             vscore.getChildren().add(scoreLabel);
+            scoreLabel.setStyle("-fx-text-fill: blue;-fx-font-weight: bold");
 
         }
+        
         
     }
 
