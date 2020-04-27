@@ -1,6 +1,7 @@
 
 import Model.DifficultyType;
 import Model.Score;
+import junit.framework.Assert;
 import Model.HighScore;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -8,6 +9,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Comparator;
 
 public class HighScoreTest {
 
@@ -46,7 +52,10 @@ public class HighScoreTest {
         // also in the file.
         assertEquals("Burt", highScores.getScoresList().get(0).getName());
         assertEquals("Roger", highScores.getScoresList().get(1).getName());
-
+        assertEquals(2, highScores.getScoresList().stream().count());
+        assertEquals("Burt", highScores.getScoresList().stream().findFirst().get().getName());
+        Comparator<Score> comparator = Comparator.comparing(Score :: getScore);    
+        assertEquals(50000, highScores.getScoresList().stream().max(comparator).get().getScore());
     }
 
     /**
@@ -71,6 +80,9 @@ public class HighScoreTest {
         assertTrue(highScores.getScoresList().get(2).getName().equals("Sue"));
         assertTrue(highScores.getScoresList().get(2).getScore() == 30000);
         
+        assertFalse(highScores.getScoresList().isEmpty());
+        Comparator<Score> comparator = Comparator.comparing(Score :: getScore);    
+        assertEquals(40000, highScores.getScoresList().stream().max(comparator).get().getScore());
         assertEquals(12, highScores.getScoresList().size());
     }
 
@@ -87,6 +99,7 @@ public class HighScoreTest {
 
         try {
             highScores.loadScores("src/main/resources/HighScoresTestData.txt");
+            assertEquals(12, highScores.getScoresList().size());            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             System.out.println("I/O Error");
@@ -96,6 +109,9 @@ public class HighScoreTest {
         // Check if File SaveScoresTestData.txt exists
         File fileObj =  new File("src/main/resources/SaveScoresTestData.txt");
         assertTrue(fileObj.exists());
+        assertFalse(!fileObj.exists());
+        InputStream file = this.getClass().getResourceAsStream("/HighScoresTestData.txt");
+        assertNotNull(file);
 
     }
 

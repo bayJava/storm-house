@@ -17,6 +17,7 @@ public class ScoreTest {
 
         assertTrue(score.getName().equals("Don"));
         assertTrue(score.getScore() == 10000);
+        assertEquals(score.getName(), "Don");
 
     }
 

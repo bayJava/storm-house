@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="Instructions"  xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
+   spacing="10" prefHeight="500" prefWidth="450">
+    <HBox alignment="CENTER" style="-fx-font-size: 20px;-fx-border-color:#DAA520;-fx-border-width:2px;-fx-border-height:2px;-fx-font: 28px Vivaldi;" >
+      <Label text="Instructions" alignment="CENTER"/>
+    </HBox>
+    <HBox alignment="CENTER" style="-fx-font-size:15px;-fx-text-color: pink;">
+      <Label text="Follow these to be the Stronghold."/>
+    </HBox>
+    <HBox alignment="CENTER" style="-fx-font-size:15px;-fx-font-color: pink;">
+      <Label text="You are a sniper who must protect a building by eliminating all the enemy soldiers who are trying to destroy it." wrapText="true"/>
+    </HBox>
+
+</VBox>

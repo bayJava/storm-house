@@ -17,7 +17,7 @@
       <Label text="Name" />
       <Label text="Score"/>
     </HBox>
-    <HBox>
+    <HBox style="-fx-padding: 1 40 1 34;">
       <VBox fx:id="vrank"></VBox>
       <VBox fx:id="vname"></VBox>
       <VBox fx:id="vscore"></VBox>

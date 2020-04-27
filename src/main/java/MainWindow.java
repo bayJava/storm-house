@@ -1,3 +1,5 @@
+import java.applet.AudioClip;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -6,6 +8,7 @@ import java.util.List;
 import Model.DifficultyType;
 import Model.HighScore;
 import Model.Score;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.media.*;
 import javafx.stage.Stage;
 
 
@@ -56,12 +60,21 @@ public class MainWindow {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewHighScore.fxml"));
 
         Stage newHighscore = new Stage();
-        newHighscore.setScene(new Scene(loader.load()));
-
+        SoundPlay();
+        newHighscore.setScene(new Scene(loader.load()));   
         newHighscore.show();
-
     }
 
+    public void SoundPlay()
+    {
+
+    File audioFile = new File("src/main/resources/Sleep_Away.mp3");
+    Media audio = new Media(audioFile.toURI().toString());
+    MediaPlayer audioPlayer = new MediaPlayer(audio);
+    audioPlayer.setAutoPlay(true);
+    audioPlayer.play();
+    }
+    
     @FXML
     public void onInstructions(ActionEvent e) throws IOException {
 
