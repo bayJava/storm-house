@@ -1,3 +1,10 @@
 .root {
     -fx-padding: 10; /* Add a small padding around the window */
 }
+
+.label {
+    -fx-spacing: 500;
+    -fx-padding: 1 40 1 40;
+    -fx-font-weight:bold;
+    -fx-text-alignment: justify;
+}
